@@ -22,12 +22,12 @@ export function applyHostClass(host: Element, map: ClassMap) {
   }
 }
 
-export function applySizeClass(host: Element, size: Sizes) {
+export function applySizeClass(host: Element, size: Sizes, prefix = "is-") {
   assertSize(size)
   applyHostClass(host, {
-    "is-small": size === "small",
-    "is-medium": size === "medium",
-    "is-large": size === "large",
+    [`${prefix}small`]: size === "small",
+    [`${prefix}medium`]: size === "medium",
+    [`${prefix}large`]: size === "large",
   })
 }
 
@@ -45,6 +45,18 @@ function applyBoolClass(
 
 export function applyLightClass(host: Element, light: Bool) {
   applyBoolClass(host, light, "light", "is-light")
+}
+
+export function applyRoundClass(host: Element, rounded: Bool) {
+  applyBoolClass(host, rounded, "rounded", "is-rounded")
+}
+
+export function applyDeleteClass(host: Element, deletable: Bool) {
+  applyBoolClass(host, deletable, "deletable", "is-delete")
+}
+
+export function applyAddonsClass(host: Element, addons: Bool) {
+  applyBoolClass(host, addons, "addons", "has-addons")
 }
 
 export function applyColorClass(host: Element, color: Colors) {
@@ -93,7 +105,7 @@ export function assertSize(size: Sizes): void | never {
 }
 
 export function assertBoolean(value: Bool, name: string): void | never {
-  assertIn(value.toString(), BOOLEAN, name)
+  assertIn(value?.toString?.(), BOOLEAN, name)
 }
 
 const COLORS = ["primary", "link", "info", "success", "warning", "danger"]

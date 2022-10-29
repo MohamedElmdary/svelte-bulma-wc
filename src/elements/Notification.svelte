@@ -16,10 +16,10 @@
 
   applyHostClass(host, { notification: true })
 
-  export let light: Bool
+  export let light: Bool = undefined
   $: applyLightClass(host, light)
 
-  export let color: Colors
+  export let color: Colors = undefined
   $: applyColorClass(host, color)
 </script>
 

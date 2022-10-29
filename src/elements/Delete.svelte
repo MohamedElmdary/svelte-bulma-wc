@@ -9,7 +9,7 @@
   const host = get_current_component()
   applyHostClass(host, { delete: true })
 
-  export let size: "small" | "medium" | "large"
+  export let size: "small" | "medium" | "large" = undefined
   $: applySizeClass(host, size)
 </script>
 
