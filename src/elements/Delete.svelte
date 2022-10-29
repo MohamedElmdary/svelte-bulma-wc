@@ -2,7 +2,7 @@
 
 <script context="module" lang="ts">
   import { get_current_component } from "svelte/internal"
-  import { applyHostClass, assertSize } from "../internals"
+  import { applyHostClass, applySizeClass } from "../internals"
 </script>
 
 <script lang="ts">
@@ -10,14 +10,7 @@
   applyHostClass(host, { delete: true })
 
   export let size: "small" | "medium" | "large"
-  $: if (size) {
-    assertSize(size)
-    applyHostClass(host, {
-      "is-small": size === "small",
-      "is-medium": size === "medium",
-      "is-large": size === "large",
-    })
-  }
+  $: applySizeClass(host, size)
 </script>
 
 <slot />
