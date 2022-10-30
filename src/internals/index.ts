@@ -22,6 +22,20 @@ export function applyHostClass(host: Element, map: ClassMap) {
   }
 }
 
+export function loadGlobalStyles(host: Element) {
+  const styles = document.head.querySelector("[data-global-styles]")
+  if (styles) {
+    host.prepend(styles.cloneNode(true))
+  }
+}
+
+export function initElement(host: Element, map: ClassMap = {}) {
+  return () => {
+    applyHostClass(host, map)
+    loadGlobalStyles(host)
+  }
+}
+
 export function applySizeClass(host: Element, size: Sizes, prefix = "is-") {
   assertSize(size)
   applyHostClass(host, {

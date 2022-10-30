@@ -1,14 +1,14 @@
 <svelte:options tag="b-tag" />
 
 <script context="module" lang="ts">
-  import { get_current_component } from "svelte/internal"
+  import { get_current_component, onMount } from "svelte/internal"
   import {
     applyColorClass,
     applyDeleteClass,
-    applyHostClass,
     applyLightClass,
     applyRoundClass,
     applySizeClass,
+    initElement,
     type Bool,
     type Colors,
     type Sizes,
@@ -17,8 +17,6 @@
 
 <script lang="ts">
   const host = get_current_component()
-
-  applyHostClass(host, { tag: true })
 
   export let color: Colors = undefined
   $: applyColorClass(host, color)
@@ -34,6 +32,8 @@
 
   export let deletable: Bool = undefined
   $: applyDeleteClass(host, deletable)
+
+  onMount(initElement(host, { tag: true }))
 </script>
 
 <slot />
