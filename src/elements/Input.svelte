@@ -28,7 +28,6 @@
 </script>
 
 {#if ctrl}
-  {JSON.stringify(ctrl)}
   <div class="field" bind:this={host}>
     <span class="label">
       {label}
