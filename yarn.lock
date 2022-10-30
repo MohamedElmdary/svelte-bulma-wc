@@ -84,6 +84,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/validator@^13.7.7":
+  version "13.7.9"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.7.9.tgz#9b1d1c534574c89176f770f1c7b95f808cae2c1e"
+  integrity sha512-y5KJ1PjGXPpU4CZ7lThDu31s+FqvzhqwMOR6Go/x6xaQMFjgzwfzfOvCwABsylr/5n8sB1qFQm1Vi7TaCB8P+A==
+
 anymatch@~3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
@@ -591,6 +596,14 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+rx-svelte-forms@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/rx-svelte-forms/-/rx-svelte-forms-1.0.3.tgz#781d93077d4d5a2811ac668bf9e8def2283269de"
+  integrity sha512-SjP0ginP5YRUwTVHe6HCpnHoG29YNwLRTuAm9iPOvYBq0aeb0RGvzcCE95lKYJ+D1ABpTv77zXRvemrZOOkIoA==
+  dependencies:
+    "@types/validator" "^13.7.7"
+    validator "^13.7.0"
+
 sade@^1.7.4:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/sade/-/sade-1.8.1.tgz#0a78e81d658d394887be57d2a409bf703a3b2701"
@@ -692,6 +705,11 @@ typescript@*, typescript@^4.6.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"
   integrity sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==
+
+validator@^13.7.0:
+  version "13.7.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-13.7.0.tgz#4f9658ba13ba8f3d82ee881d3516489ea85c0857"
+  integrity sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==
 
 vite@^3.2.0:
   version "3.2.1"
