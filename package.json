@@ -1,6 +1,6 @@
 {
   "name": "svelte-bulma-wc",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "main": "dist/svelte-bulma-wc.js",
