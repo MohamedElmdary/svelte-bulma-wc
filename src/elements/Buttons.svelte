@@ -33,5 +33,6 @@
 <style scoped>
   :host {
     display: block;
+    width: 100%;
   }
 </style>

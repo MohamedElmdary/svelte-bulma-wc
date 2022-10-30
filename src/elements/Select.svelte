@@ -2,7 +2,7 @@
 
 <script context="module" lang="ts">
   import { onMount } from "svelte/internal"
-  import { assertBoolean, initElement, type Bool } from "../internals"
+  import { initElement } from "../internals"
   import { form, type FormControl } from "rx-svelte-forms"
 
   export type SelectOption = { label: string; value: any }
