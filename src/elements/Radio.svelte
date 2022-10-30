@@ -5,14 +5,14 @@
   import { initElement } from "../internals"
   import { form, type FormControl } from "rx-svelte-forms"
 
-  export type RadioOtion = { label: string; value: any }
+  export type RadioOption = { label: string; value: any }
 </script>
 
 <script lang="ts">
   let host: Element
 
   export let name: string
-  export let options: RadioOtion[] = []
+  export let options: RadioOption[] = []
   export let controller: FormControl<string | number> = undefined
 
   onMount(() => {
@@ -20,8 +20,8 @@
   })
 </script>
 
-{#if controller}
-  <div class="field" bind:this={host}>
+<div class="field" bind:this={host}>
+  {#if controller}
     <div class="control">
       {#each options as option}
         <label class="radio">
@@ -35,5 +35,5 @@
         </label>
       {/each}
     </div>
-  </div>
-{/if}
+  {/if}
+</div>

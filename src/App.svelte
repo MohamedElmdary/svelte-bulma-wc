@@ -5,6 +5,7 @@
   import Input from "./elements/Input.svelte"
   import CheckBox from "./elements/CheckBox.svelte"
   import Radio from "./elements/Radio.svelte"
+  import Select from "./elements/Select.svelte"
 
   const userForm = fb.group({
     email: [null as number, [validators.required(), validators.min(5)]],
@@ -13,11 +14,16 @@
       "female",
       [validators.required(), validators.isIn(["male", "female"])],
     ],
+    country: [
+      null as string,
+      [validators.required(), validators.isIn(["egypt", "america"])],
+    ],
   })
 
   const email = userForm.get("email")
   const terms = userForm.get("terms")
   const gender = userForm.get("gender")
+  const country = userForm.get("country")
 </script>
 
 <form use:form={userForm}>
@@ -26,7 +32,9 @@
     label="Email Address"
     placeholder="User's email address"
     controller={email}
-    type="textarea"
+    type="text"
+    loading
+    hint="valid"
   />
 
   <CheckBox label="I agree to the terms and conditions" controller={terms} />
@@ -38,6 +46,15 @@
       { label: "Female", value: "female" },
     ]}
     controller={gender}
+  />
+
+  <Select
+    label="Please select a country"
+    options={[
+      { label: "Egypt", value: "egypt" },
+      { label: "America", value: "america" },
+    ]}
+    controller={country}
   />
 </form>
 

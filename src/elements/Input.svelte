@@ -16,6 +16,8 @@
   export let label: string = ""
   export let placeholder: string = undefined
   export let controller: FormControl<string | number> = undefined
+  export let loading: boolean = false
+  export let hint: string = undefined
   let value: string | number
 
   onMount(() => {
@@ -28,12 +30,12 @@
   $: invalid = ctrl ? ctrl.invalid && (ctrl.dirty || ctrl.touched) : false
 </script>
 
-{#if ctrl}
-  <div class="field" bind:this={host}>
+<div class="field" bind:this={host}>
+  {#if ctrl}
     <span class="label">
       {label}
     </span>
-    <div class="control">
+    <div class="control" class:is-loading={loading}>
       {#if type === "textarea"}
         <textarea
           class="textarea"
@@ -58,6 +60,10 @@
       <p class="help is-danger">
         {Object.keys(ctrl.errors)}
       </p>
+    {:else if hint}
+      <p class="help">
+        {hint}
+      </p>
     {/if}
-  </div>
-{/if}
+  {/if}
+</div>
