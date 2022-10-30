@@ -1,10 +1,21 @@
 {
   "name": "svelte-bulma-wc",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
-  "main": "dist/svelte-bulma-wc.js",
+  "main": "src/public_api.ts",
   "types": "bulma.d.ts",
+  "exports": {
+    ".": {
+      "default": "./src/public_api.ts"
+    },
+    "./elements": {
+      "default": "./src/elements/index.ts"
+    },
+    "./internals": {
+      "default": "./src/internals/index.ts"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
