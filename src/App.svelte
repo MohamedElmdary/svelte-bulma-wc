@@ -4,14 +4,20 @@
   import { fb, validators, form } from "rx-svelte-forms"
   import Input from "./elements/Input.svelte"
   import CheckBox from "./elements/CheckBox.svelte"
+  import Radio from "./elements/Radio.svelte"
 
   const userForm = fb.group({
     email: [null as number, [validators.required(), validators.min(5)]],
     terms: [false, [validators.requiredTrue()]],
+    gender: [
+      "female",
+      [validators.required(), validators.isIn(["male", "female"])],
+    ],
   })
 
   const email = userForm.get("email")
   const terms = userForm.get("terms")
+  const gender = userForm.get("gender")
 </script>
 
 <form use:form={userForm}>
@@ -24,7 +30,15 @@
   />
 
   <CheckBox label="I agree to the terms and conditions" controller={terms} />
-  <!-- <b-input placeholder="User's email address"> Email Address </b-input> -->
+
+  <Radio
+    name="gender"
+    options={[
+      { label: "Male", value: "male" },
+      { label: "Female", value: "female" },
+    ]}
+    controller={gender}
+  />
 </form>
 
 <!-- <Table
