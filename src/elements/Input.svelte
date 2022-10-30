@@ -18,10 +18,8 @@
   export let controller: FormControl<string | number> = undefined
   export let loading: boolean = false
   export let hint: string = undefined
-  let value: string | number
 
   onMount(() => {
-    value = controller.value
     initElement(host.parentNode as Element)()
   })
 
@@ -51,7 +49,6 @@
           class:is-danger={invalid}
           {type}
           {placeholder}
-          {value}
           use:form={controller}
         />
       {/if}

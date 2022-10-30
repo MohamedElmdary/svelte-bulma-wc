@@ -11,10 +11,8 @@
 
   export let label: string = ""
   export let controller: FormControl<boolean> = undefined
-  let value: boolean
 
   onMount(() => {
-    value = controller.value
     initElement(host.parentNode as Element)()
   })
 
