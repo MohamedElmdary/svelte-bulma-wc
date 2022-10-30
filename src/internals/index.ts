@@ -50,7 +50,7 @@ export function applySizeClass(host: Element, size: Sizes, prefix = "is-") {
   })
 }
 
-function applyBoolClass(
+export function applyBoolClass(
   host: Element,
   bool: Bool,
   name: string,
