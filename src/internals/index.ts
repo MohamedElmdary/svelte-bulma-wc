@@ -22,6 +22,10 @@ export function applyHostClass(host: Element, map: ClassMap) {
   }
 }
 
+export function isTrueBool(bool: Bool): boolean {
+  return bool === "" || bool === "true" || bool === true
+}
+
 export function loadGlobalStyles(host: Element) {
   const styles = document.head.querySelector("[data-global-styles]")
   if (styles) {
@@ -53,7 +57,7 @@ function applyBoolClass(
 ) {
   assertBoolean(bool, name)
   applyHostClass(host, {
-    [className]: bool === "" || bool === true || bool === "true",
+    [className]: isTrueBool(bool),
   })
 }
 
