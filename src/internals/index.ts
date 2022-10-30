@@ -78,9 +78,8 @@ export function applyAddonsClass(host: Element, addons: Bool) {
   applyBoolClass(host, addons, "addons", "has-addons")
 }
 
-const ALIGN = ["centered", "right"]
 export function applyAlignClass(host: Element, align: Align) {
-  assertIn(align, ALIGN, "align")
+  assertAlign(align)
   applyHostClass(host, {
     "is-centered": align === "centered",
     "is-right": align === "right",
@@ -139,4 +138,9 @@ export function assertBoolean(value: Bool, name: string): void | never {
 const COLORS = ["primary", "link", "info", "success", "warning", "danger"]
 export function assertColors(color: Colors): void | never {
   assertIn(color, COLORS, "color")
+}
+
+const ALIGN = ["centered", "right"]
+export function assertAlign(align: Align): void | never {
+  assertIn(align, ALIGN, "align")
 }
