@@ -20,7 +20,7 @@
     label="Email Address"
     placeholder="User's email address"
     controller={email}
-    type="number"
+    type="textarea"
   />
 
   <CheckBox label="I agree to the terms and conditions" controller={terms} />

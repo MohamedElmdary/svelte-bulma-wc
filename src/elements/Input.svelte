@@ -9,8 +9,9 @@
 <script lang="ts">
   let host: Element
 
-  export let type: "text" | "email" | "password" | "number" = "text"
-  $: assertIn(type, ["text", "email", "password", "number"], "type")
+  export let type: "text" | "email" | "password" | "number" | "textarea" =
+    "text"
+  $: assertIn(type, ["text", "email", "password", "number", "textarea"], "type")
 
   export let label: string = ""
   export let placeholder: string = undefined
@@ -33,15 +34,25 @@
       {label}
     </span>
     <div class="control">
-      <input
-        class="input"
-        class:is-success={valid}
-        class:is-danger={invalid}
-        {type}
-        {placeholder}
-        {value}
-        use:form={controller}
-      />
+      {#if type === "textarea"}
+        <textarea
+          class="textarea"
+          class:is-success={valid}
+          class:is-danger={invalid}
+          {placeholder}
+          use:form={controller}
+        />
+      {:else}
+        <input
+          class="input"
+          class:is-success={valid}
+          class:is-danger={invalid}
+          {type}
+          {placeholder}
+          {value}
+          use:form={controller}
+        />
+      {/if}
     </div>
     {#if invalid}
       <p class="help is-danger">
