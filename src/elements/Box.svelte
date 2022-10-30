@@ -12,9 +12,3 @@
 </script>
 
 <slot />
-
-<style scoped>
-  :host {
-    color: green;
-  }
-</style>

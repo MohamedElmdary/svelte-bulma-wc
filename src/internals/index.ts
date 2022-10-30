@@ -3,6 +3,7 @@ export type ClassMap = { [key: string]: boolean }
 export type Sizes = "small" | "medium" | "large"
 export type Bool = "" | "true" | "false" | true | false
 type Colors = "primary" | "link" | "info" | "success" | "warning" | "danger"
+export type Align = "centered" | "right"
 
 export { type Colors }
 
@@ -75,6 +76,15 @@ export function applyDeleteClass(host: Element, deletable: Bool) {
 
 export function applyAddonsClass(host: Element, addons: Bool) {
   applyBoolClass(host, addons, "addons", "has-addons")
+}
+
+const ALIGN = ["centered", "right"]
+export function applyAlignClass(host: Element, align: Align) {
+  assertIn(align, ALIGN, "align")
+  applyHostClass(host, {
+    "is-centered": align === "centered",
+    "is-right": align === "right",
+  })
 }
 
 export function applyColorClass(host: Element, color: Colors) {
