@@ -14,6 +14,7 @@
   export let name: string
   export let options: RadioOption[] = []
   export let controller: FormControl<string | number> = undefined
+  export let disabled: boolean = false
 
   onMount(() => {
     initElement(host.parentNode as Element)()
@@ -30,6 +31,7 @@
             {name}
             value={option.value}
             use:form={controller}
+            {disabled}
           />
           {option.label}
         </label>

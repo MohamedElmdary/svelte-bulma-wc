@@ -15,16 +15,17 @@
 
   export let label: string = ""
   export let placeholder: string = undefined
-  export let controller: FormControl<string | number> = undefined
+  export let controller: FormControl<string> | FormControl<number> = undefined
   export let loading: boolean = false
   export let hint: string = undefined
+  export let disabled: boolean = false
 
   onMount(() => {
     initElement(host.parentNode as Element)()
   })
 
   $: ctrl = $controller
-  $: valid = ctrl ? ctrl.valid && (ctrl.dirty || ctrl.touched) : false
+  $: valid = ctrl ? ctrl.valid : false
   $: invalid = ctrl ? ctrl.invalid && (ctrl.dirty || ctrl.touched) : false
 </script>
 
@@ -41,6 +42,8 @@
           class:is-danger={invalid}
           {placeholder}
           use:form={controller}
+          value={ctrl.value}
+          {disabled}
         />
       {:else}
         <input
@@ -50,6 +53,8 @@
           {type}
           {placeholder}
           use:form={controller}
+          value={ctrl.value}
+          {disabled}
         />
       {/if}
     </div>

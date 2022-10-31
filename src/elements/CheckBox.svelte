@@ -11,6 +11,7 @@
 
   export let label: string = ""
   export let controller: FormControl<boolean> = undefined
+  export let disabled: boolean = false
 
   onMount(() => {
     initElement(host.parentNode as Element)()
@@ -24,7 +25,12 @@
   <div class="field" bind:this={host}>
     <div class="control">
       <label class="checkbox">
-        <input type="checkbox" use:form={controller} />
+        <input
+          type="checkbox"
+          {disabled}
+          use:form={controller}
+          checked={ctrl.value}
+        />
         {@html label}
       </label>
     </div>

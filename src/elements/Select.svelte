@@ -16,22 +16,38 @@
   export let options: SelectOption[] = []
   export let controller: FormControl<string | number> = undefined
   export let loading: boolean = false
+  export let disabled: boolean = false
 
   onMount(() => {
     initElement(host.parentNode as Element)()
   })
+
+  $: ctrl = $controller
+  $: valid = ctrl ? ctrl.valid : false
+  $: invalid = ctrl ? ctrl.invalid && (ctrl.dirty || ctrl.touched) : false
 </script>
 
 <div class="field" bind:this={host}>
-  {#if controller}
+  {#if ctrl}
     <span class="label">
       {label}
     </span>
     <div class="control">
-      <div class="select" style:width="100%" class:is-loading={loading}>
-        <select style:width="100%" use:form={controller}>
+      <div
+        class="select"
+        class:is-success={valid}
+        class:is-danger={invalid}
+        style:width="100%"
+        class:is-loading={loading}
+      >
+        <select
+          style:width="100%"
+          value={ctrl.value}
+          use:form={controller}
+          {disabled}
+        >
           {#if placeholder}
-            <option disabled>{placeholder}</option>
+            <option value={null} disabled>{placeholder}</option>
           {/if}
           {#each options as option}
             <option value={option.value}>
