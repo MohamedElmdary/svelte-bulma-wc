@@ -58,9 +58,9 @@
         />
       {/if}
     </div>
-    {#if invalid}
+    {#if invalid && ctrl.error}
       <p class="help is-danger">
-        {Object.keys(ctrl.errors)}
+        {ctrl.error}
       </p>
     {:else if hint}
       <p class="help">

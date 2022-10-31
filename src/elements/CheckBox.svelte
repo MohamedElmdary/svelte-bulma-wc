@@ -34,8 +34,10 @@
         {@html label}
       </label>
     </div>
-    {#if invalid}
-      <p class="help is-danger">{Object.keys(ctrl.errors)}</p>
+    {#if invalid && ctrl.error}
+      <p class="help is-danger">
+        {ctrl.error}
+      </p>
     {/if}
   </div>
 {/if}

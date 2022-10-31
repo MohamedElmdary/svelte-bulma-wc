@@ -56,6 +56,11 @@
           {/each}
         </select>
       </div>
+      {#if invalid && ctrl.error}
+        <p class="help is-danger">
+          {ctrl.error}
+        </p>
+      {/if}
     </div>
   {/if}
 </div>
