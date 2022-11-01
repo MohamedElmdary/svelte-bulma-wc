@@ -1,7 +1,7 @@
 <svelte:options tag="b-select" />
 
 <script context="module" lang="ts">
-  import { onMount } from "svelte/internal"
+  import { onDestroy, onMount } from "svelte/internal"
   import { initElement } from "../internals"
   import { form, type FormControl } from "rx-svelte-forms"
 
@@ -10,6 +10,7 @@
 
 <script lang="ts">
   let host: Element
+  let select: HTMLSelectElement
 
   export let label: string = ""
   export let placeholder: string = ""
@@ -22,6 +23,28 @@
   onMount(() => {
     initElement(host.parentNode as Element)()
   })
+
+  // Support Numeric values
+  let setValue: (value: string | number) => void
+  onDestroy(() => {
+    if (setValue) controller.setValue = setValue
+  })
+
+  $: if (controller && !setValue) {
+    setValue = controller.setValue.bind(controller)
+    controller.setValue = (value) => {
+      if (value == null || value == undefined || value == "null") {
+        return setValue(null)
+      }
+
+      const idx = options.findIndex((option) => option.value == value)
+      if (idx > -1) {
+        return setValue(options[idx].value)
+      }
+
+      return setValue(value)
+    }
+  }
 
   $: ctrl = $controller
   $: valid = ctrl ? ctrl.valid : false
@@ -42,16 +65,19 @@
         class:is-loading={loading}
       >
         <select
+          bind:this={select}
           style:width="100%"
           value={ctrl.value}
           use:form={controller}
           {disabled}
         >
           {#if placeholder}
-            <option value={null} disabled>{placeholder}</option>
+            <option value={null} selected={ctrl.value == null} disabled>
+              {placeholder}
+            </option>
           {/if}
-          {#each options as option}
-            <option value={option.value}>
+          {#each options as option (option.value)}
+            <option selected={ctrl.value == option.value} value={option.value}>
               {option.label}
             </option>
           {/each}

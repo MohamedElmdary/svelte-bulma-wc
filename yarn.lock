@@ -596,10 +596,10 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rx-svelte-forms@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/rx-svelte-forms/-/rx-svelte-forms-1.0.7.tgz#304d17c01844f26cc7cd1c9547013983a1234094"
-  integrity sha512-CjUF3pct2W/7JIcv4V1/IgrkHAXdSn99lbiL8mIHM4DXxS4UgA655+qxIlshPkpUqxP4vk7uJPBz61IbLZ1pgQ==
+rx-svelte-forms@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/rx-svelte-forms/-/rx-svelte-forms-1.0.9.tgz#ad42bdd584748ba3c7c4c7de72f9a142cd981779"
+  integrity sha512-hZRt4CZEa6nd1AnhodlZQKeqGYpAk2noxqiKKkNW4Yg+qSB0hPD5LEfoXCQ/UmuZblr+ZXng/Uq70i+mKrf6Fg==
   dependencies:
     "@types/validator" "^13.7.7"
     validator "^13.7.0"
