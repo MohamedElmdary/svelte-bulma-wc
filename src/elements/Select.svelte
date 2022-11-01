@@ -17,6 +17,7 @@
   export let controller: FormControl<string | number> = undefined
   export let loading: boolean = false
   export let disabled: boolean = false
+  export let validation: boolean = false
 
   onMount(() => {
     initElement(host.parentNode as Element)()
@@ -35,8 +36,8 @@
     <div class="control">
       <div
         class="select"
-        class:is-success={valid}
-        class:is-danger={invalid}
+        class:is-success={validation && valid}
+        class:is-danger={validation && invalid}
         style:width="100%"
         class:is-loading={loading}
       >
@@ -56,7 +57,7 @@
           {/each}
         </select>
       </div>
-      {#if invalid && ctrl.error}
+      {#if validation && invalid && ctrl.error}
         <p class="help is-danger">
           {ctrl.error}
         </p>

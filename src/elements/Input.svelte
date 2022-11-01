@@ -19,6 +19,7 @@
   export let loading: boolean = false
   export let hint: string = undefined
   export let disabled: boolean = false
+  export let validation: boolean = true
 
   onMount(() => {
     initElement(host.parentNode as Element)()
@@ -38,8 +39,8 @@
       {#if type === "textarea"}
         <textarea
           class="textarea"
-          class:is-success={valid}
-          class:is-danger={invalid}
+          class:is-success={validation && valid}
+          class:is-danger={validation && invalid}
           {placeholder}
           use:form={controller}
           value={ctrl.value}
@@ -58,7 +59,7 @@
         />
       {/if}
     </div>
-    {#if invalid && ctrl.error}
+    {#if validation && invalid && ctrl.error}
       <p class="help is-danger">
         {ctrl.error}
       </p>
