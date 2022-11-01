@@ -17,7 +17,7 @@
   export let controller: FormControl<string | number> = undefined
   export let loading: boolean = false
   export let disabled: boolean = false
-  export let validation: boolean = false
+  export let validation: boolean = true
 
   onMount(() => {
     initElement(host.parentNode as Element)()
