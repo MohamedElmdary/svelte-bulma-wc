@@ -13,6 +13,7 @@
   export let controller: FormControl<boolean> = undefined
   export let disabled: boolean = false
   export let validation: boolean = true
+  export let hint: string = ""
 
   export let type: "checkbox" | "switch" = "switch"
   $: assertIn(type, ["checkbox", "switch"], "type")
@@ -81,6 +82,7 @@
   })
 
   $: ctrl = $controller
+  $: valid = ctrl ? ctrl.valid : false
   $: invalid = ctrl ? ctrl.invalid && (ctrl.dirty || ctrl.touched) : false
 </script>
 
@@ -113,7 +115,11 @@
         </label>
       {/if}
     </div>
-    {#if invalid && ctrl.error && validation}
+    {#if hint}
+      <p class="help" class:is-success={validation && valid}>
+        {hint}
+      </p>
+    {:else if validation && invalid && ctrl.error}
       <p class="help is-danger">
         {ctrl.error}
       </p>

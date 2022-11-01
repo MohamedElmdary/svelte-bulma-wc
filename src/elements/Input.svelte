@@ -59,13 +59,13 @@
         />
       {/if}
     </div>
-    {#if validation && invalid && ctrl.error}
+    {#if hint}
+      <p class="help" class:is-success={validation && valid}>
+        {hint}
+      </p>
+    {:else if validation && invalid && ctrl.error}
       <p class="help is-danger">
         {ctrl.error}
-      </p>
-    {:else if hint}
-      <p class="help">
-        {hint}
       </p>
     {/if}
   {/if}

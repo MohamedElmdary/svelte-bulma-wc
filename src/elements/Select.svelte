@@ -19,6 +19,7 @@
   export let loading: boolean = false
   export let disabled: boolean = false
   export let validation: boolean = true
+  export let hint: string = ""
 
   onMount(() => {
     initElement(host.parentNode as Element)()
@@ -60,7 +61,7 @@
       <div
         class="select"
         class:is-success={validation && valid}
-        class:is-danger={validation && invalid}
+        class:is-danger={validation && invalid && !hint}
         style:width="100%"
         class:is-loading={loading}
       >
@@ -83,11 +84,15 @@
           {/each}
         </select>
       </div>
-      {#if validation && invalid && ctrl.error}
-        <p class="help is-danger">
-          {ctrl.error}
-        </p>
-      {/if}
     </div>
+    {#if hint}
+      <p class="help" class:is-success={validation && valid}>
+        {hint}
+      </p>
+    {:else if validation && invalid && ctrl.error}
+      <p class="help is-danger">
+        {ctrl.error}
+      </p>
+    {/if}
   {/if}
 </div>

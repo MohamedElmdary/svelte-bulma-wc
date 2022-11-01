@@ -15,10 +15,16 @@
   export let options: RadioOption[] = []
   export let controller: FormControl<string | number> = undefined
   export let disabled: boolean = false
+  export let validation: boolean = true
+  export let hint: string = ""
 
   onMount(() => {
     initElement(host.parentNode as Element)()
   })
+
+  $: ctrl = $controller
+  $: valid = ctrl ? ctrl.valid : false
+  $: invalid = ctrl ? ctrl.invalid && (ctrl.dirty || ctrl.touched) : false
 </script>
 
 <div class="field" bind:this={host}>
@@ -37,5 +43,14 @@
         </label>
       {/each}
     </div>
+    {#if hint}
+      <p class="help" class:is-success={validation && valid}>
+        {hint}
+      </p>
+    {:else if validation && invalid && ctrl.error}
+      <p class="help is-danger">
+        {ctrl.error}
+      </p>
+    {/if}
   {/if}
 </div>

@@ -1,7 +1,7 @@
 {
   "name": "svelte-bulma-wc",
   "private": false,
-  "version": "1.0.10",
+  "version": "1.0.11",
   "type": "module",
   "main": "src/public_api.ts",
   "types": "bulma.d.ts",
@@ -33,6 +33,6 @@
     "vite": "^3.2.0"
   },
   "dependencies": {
-    "rx-svelte-forms": "^1.0.9"
+    "rx-svelte-forms": "^1.0.11"
   }
 }
