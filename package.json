@@ -1,7 +1,7 @@
 {
-  "name": "svelte-bulma-wc",
+  "name": "tf-svelte-bulma-wc",
   "private": false,
-  "version": "1.0.11",
+  "version": "1.0.0",
   "type": "module",
   "main": "src/public_api.ts",
   "types": "bulma.d.ts",
