@@ -3,7 +3,7 @@
 <script context="module" lang="ts">
   import { onMount } from "svelte/internal"
   import { initElement } from "../internals"
-  import { form, type FormControl } from "rx-svelte-forms"
+  import { form, type FormControl } from "tf-svelte-rx-forms"
 
   export type RadioOption = { label: string; value: any }
 </script>

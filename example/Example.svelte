@@ -2,7 +2,7 @@
 
 <script context="module" lang="ts">
   import * as Bulma from "../src/public_api"
-  import { FormControl, validators } from "rx-svelte-forms"
+  import { FormControl, validators } from "tf-svelte-rx-forms"
 </script>
 
 <script lang="ts">

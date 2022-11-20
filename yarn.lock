@@ -596,14 +596,6 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rx-svelte-forms@^1.0.11:
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/rx-svelte-forms/-/rx-svelte-forms-1.0.11.tgz#3db71d6b680fb59b5523b0a43494ab28a6919f9c"
-  integrity sha512-iSrw9h0JHePaUGX0LglJOo+tHpwSXoI6M5vKFTyIOBJft+Gq/xtKSsGvej6feMC1GDNsHsCRfEY4wGw1cHM6RQ==
-  dependencies:
-    "@types/validator" "^13.7.7"
-    validator "^13.7.0"
-
 sade@^1.7.4:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/sade/-/sade-1.8.1.tgz#0a78e81d658d394887be57d2a409bf703a3b2701"
@@ -688,6 +680,14 @@ svelte@^3.52.0:
   version "3.52.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.52.0.tgz#08259eff20904c63882b66a5d409a55e8c6743b8"
   integrity sha512-FxcnEUOAVfr10vDU5dVgJN19IvqeHQCS1zfe8vayTfis9A2t5Fhx+JDe5uv/C3j//bB1umpLJ6quhgs9xyUbCQ==
+
+tf-svelte-rx-forms@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tf-svelte-rx-forms/-/tf-svelte-rx-forms-1.0.0.tgz#fdd95a41bcab5940f94f13f821b4f7597313b1b2"
+  integrity sha512-l3+b3/mDm3IFFD+RLB/eGQh4mjbJQxFa/Y5YGSPvvWtYW7nZSr4mDdtweoA0CuFI9LW0PNaVTwvuwDxi5zuRAQ==
+  dependencies:
+    "@types/validator" "^13.7.7"
+    validator "^13.7.0"
 
 to-regex-range@^5.0.1:
   version "5.0.1"
