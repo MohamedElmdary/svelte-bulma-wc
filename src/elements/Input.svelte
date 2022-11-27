@@ -2,7 +2,7 @@
 
 <script context="module" lang="ts">
   import { onMount } from "svelte"
-  import { assertIn, initElement } from "../internals"
+  import { assertColors, assertIn, initElement, type Colors } from "../internals"
   import { form, type FormControl } from "tf-svelte-rx-forms"
 </script>
 
@@ -20,6 +20,8 @@
   export let hint: string = undefined
   export let disabled: boolean = false
   export let validation: boolean = true
+  export let hintColor: Colors = undefined
+  $: assertColors(hintColor)
 
   onMount(() => {
     initElement(host.parentNode as Element)()
@@ -92,7 +94,14 @@
       {/if}
     </div>
     {#if hint}
-      <p class="help" class:is-success={valid}>
+      <p class="help" 
+        class:is-success={(valid && !hintColor) || hintColor === "success"}
+        class:is-primary={hintColor === "primary"}
+        class:is-link={hintColor === "link"}
+        class:is-info={hintColor === "info"}
+        class:is-warning={hintColor === "warning"}
+        class:is-danger={hintColor === "danger"}
+      >
         {hint}
       </p>
     {:else if invalid && ctrl.error}
