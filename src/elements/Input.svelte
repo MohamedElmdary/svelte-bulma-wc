@@ -2,24 +2,30 @@
 
 <script context="module" lang="ts">
   import { onMount } from "svelte"
-  import { assertColors, assertIn, initElement, type Colors } from "../internals"
-  import { form, type FormControl } from "tf-svelte-rx-forms"
+  import {
+    assertColors,
+    assertIn,
+    initElement,
+    type Colors,
+  } from "../internals"
+  import type { FormControl } from "tf-svelte-rx-forms"
+  const { form } = window.tfSvelteRxForms
 </script>
 
 <script lang="ts">
   let host: Element
 
-  export let type: "text" | "email" | "password" | "number" | "textarea" =
-    "text"
-  $: assertIn(type, ["text", "email", "password", "number", "textarea"], "type")
+  export let type: "text" | "password" | "number" | "textarea" = "text"
+  $: assertIn(type, ["text", "password", "number", "textarea"], "type")
 
   export let label: string = ""
   export let placeholder: string = undefined
-  export let controller: FormControl<string> | FormControl<number> = undefined
+  export let controller: FormControl<string | number>
   export let loading: boolean = false
   export let hint: string = undefined
   export let disabled: boolean = false
   export let validation: boolean = true
+
   export let hintColor: Colors = undefined
   $: assertColors(hintColor)
 
@@ -67,8 +73,6 @@
         />
 
         {#if type === "password"}
-          <!-- fas far fa-eye-slash -->
-          <!-- fas fa-eye -->
           <b-icon
             class="icon"
             style:position="absolute"
@@ -94,7 +98,8 @@
       {/if}
     </div>
     {#if hint}
-      <p class="help" 
+      <p
+        class="help"
         class:is-success={(valid && !hintColor) || hintColor === "success"}
         class:is-primary={hintColor === "primary"}
         class:is-link={hintColor === "link"}

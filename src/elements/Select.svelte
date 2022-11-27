@@ -3,8 +3,9 @@
 <script context="module" lang="ts">
   import { onDestroy, onMount } from "svelte/internal"
   import { initElement } from "../internals"
-  import { form, type FormControl } from "tf-svelte-rx-forms"
+  import type { FormControl } from "tf-svelte-rx-forms"
 
+  const { form } = window.tfSvelteRxForms
   export type SelectOption = { label: string; value: any }; // prettier-ignore
 </script>
 

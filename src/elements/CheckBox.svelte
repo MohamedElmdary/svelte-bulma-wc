@@ -3,7 +3,8 @@
 <script context="module" lang="ts">
   import { onMount } from "svelte/internal"
   import { initElement, assertIn } from "../internals"
-  import { form, type FormControl } from "tf-svelte-rx-forms"
+  import type { FormControl } from "tf-svelte-rx-forms"
+  const { form } = window.tfSvelteRxForms
 </script>
 
 <script lang="ts">

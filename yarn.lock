@@ -681,10 +681,10 @@ svelte@^3.52.0:
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.52.0.tgz#08259eff20904c63882b66a5d409a55e8c6743b8"
   integrity sha512-FxcnEUOAVfr10vDU5dVgJN19IvqeHQCS1zfe8vayTfis9A2t5Fhx+JDe5uv/C3j//bB1umpLJ6quhgs9xyUbCQ==
 
-tf-svelte-rx-forms@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tf-svelte-rx-forms/-/tf-svelte-rx-forms-1.0.0.tgz#fdd95a41bcab5940f94f13f821b4f7597313b1b2"
-  integrity sha512-l3+b3/mDm3IFFD+RLB/eGQh4mjbJQxFa/Y5YGSPvvWtYW7nZSr4mDdtweoA0CuFI9LW0PNaVTwvuwDxi5zuRAQ==
+tf-svelte-rx-forms@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tf-svelte-rx-forms/-/tf-svelte-rx-forms-1.0.2.tgz#a1352ffdc2d910c198edaf3e75fddee2868135b2"
+  integrity sha512-kq2jfws89lv9OWOvL45lNcaCBegyJCUXRK3I2cr6Vgr5jxL+Im3Z7BAVU4FqfnrJYZ0i4OGEWqaIJ4mcSoDcZA==
   dependencies:
     "@types/validator" "^13.7.7"
     validator "^13.7.0"
