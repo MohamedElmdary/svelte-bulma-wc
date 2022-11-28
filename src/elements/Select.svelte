@@ -14,6 +14,7 @@
   let select: HTMLSelectElement
 
   export let label: string = ""
+  export let sublabel: string = ""
   export let placeholder: string = ""
   export let options: SelectOption[] = []
   export let controller: FormControl<string | number> = undefined
@@ -58,6 +59,7 @@
     <span class="label">
       {label}
     </span>
+    {@html sublabel}
     <div class="control">
       <div
         class="select"

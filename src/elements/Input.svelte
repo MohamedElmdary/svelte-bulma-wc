@@ -19,6 +19,7 @@
   $: assertIn(type, ["text", "password", "number", "textarea"], "type")
 
   export let label: string = ""
+  export let sublabel: string = ""
   export let placeholder: string = undefined
   export let controller: FormControl<string | number>
   export let loading: boolean = false
@@ -45,6 +46,7 @@
     <span class="label">
       {label}
     </span>
+    {@html sublabel}
     <div
       class="control"
       class:is-loading={loading}
