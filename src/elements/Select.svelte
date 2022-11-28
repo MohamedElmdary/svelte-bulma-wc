@@ -56,10 +56,12 @@
 
 <div class="field" bind:this={host}>
   {#if ctrl}
-    <span class="label">
+    <span class="label mb-0">
       {label}
     </span>
-    {@html sublabel}
+    <p class="mb-2 is-size-6 has-text-grey">
+      {@html sublabel}
+    </p>
     <div class="control">
       <div
         class="select"
