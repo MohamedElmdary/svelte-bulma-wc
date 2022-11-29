@@ -1,1 +1,1 @@
-import "./Example.svelte";
+import "./Example.svelte"

@@ -1,20 +1,25 @@
 <svelte:options tag="tf-example" />
 
 <script context="module" lang="ts">
-  import * as Bulma from "../src/public_api"
-  import { FormControl, validators } from "tf-svelte-rx-forms"
+  import Table from "../src/elements/Table.svelte"
+
+  let rows = Array.from({ length: 50 }, (_, i) => [i])
 </script>
 
-<script lang="ts">
-  const name = new FormControl("", [
-    validators.required("Name is required."),
-    validators.minLength("Name minLength is 3 chars.", 3),
-    validators.maxLength("Name maxLength is 12 chars.", 12),
-  ])
-</script>
-
-<Bulma.Input
-  label="Cluster Name"
-  placeholder="Your kubernetes cluster name"
-  controller={name}
+<Table
+  headers={["id"]}
+  {rows}
+  position={false}
+  selectable={true}
+  actions={[
+    {
+      label: "Delete",
+      click({ index, cmp }) {
+        rows = rows.filter((_, i) => i !== index)
+        cmp.rows = rows
+        cmp.unselect(index)
+      },
+    },
+  ]}
+  on:select={console.log}
 />

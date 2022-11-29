@@ -11,7 +11,11 @@
   </head>
   <body>
     <tf-example></tf-example>
-    
-    <script type="module" src="/example/example.ts"></script>
+
+    <script type="module">
+      import * as tfSvelteRxForms from "tf-svelte-rx-forms"
+      window.tfSvelteRxForms = tfSvelteRxForms
+    </script>
+    <script defer type="module" src="/example/example.ts"></script>
   </body>
 </html>
