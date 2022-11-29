@@ -65,8 +65,12 @@
     if (selected.includes(index)) {
       selected = selected.filter((i) => i !== index);
     }
-    selected = selected.map((i) => (i > index ? i - 1 : i));
     dispatch("select", selected);
+  }
+
+  export function deleteRow(index: number): void {
+    unselect(index);
+    rows = rows.filter((_, i) => i !== index);
   }
 </script>
 
