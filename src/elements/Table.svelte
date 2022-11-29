@@ -1,91 +1,72 @@
 <svelte:options tag="b-table" />
 
 <script context="module" lang="ts">
-  import { onMount, createEventDispatcher } from "svelte"
-  import { get_current_component } from "svelte/internal"
-  import {
-    assertBoolean,
-    initElement,
-    isTrueBool,
-    type Bool,
-    type Colors,
-  } from "../internals"
-  import { btn } from "./button"
-  import type { Table } from "../internals/type"
+  import { onMount, createEventDispatcher } from "svelte";
+  import { get_current_component } from "svelte/internal";
+  import { initElement, isTrueBool, type Colors } from "../internals";
+  import { btn } from "./button";
+  import type { Table } from "../internals/type";
 
   export interface ActionEvent {
-    event?: Event
-    row: any[]
-    index: number
-    action: Action
-    cmp: Table
+    event?: Event;
+    row: any[];
+    index: number;
+    action: Action;
+    cmp: Table;
   }
   export interface Action {
-    label: string
-    color?: Colors
-    icon?: string
-    iconRight?: boolean
-    click?(event: ActionEvent): void
-    disabled?(event: ActionEvent): boolean
-    loading?(event: ActionEvent): boolean
+    label: string;
+    color?: Colors;
+    icon?: string;
+    iconRight?: boolean;
+    click?(event: ActionEvent): void;
+    disabled?(event: ActionEvent): boolean;
+    loading?(event: ActionEvent): boolean;
   }
 </script>
 
 <script lang="ts">
-  const cmp = get_current_component()
-  let host: HTMLTableElement
-  const dispatch = createEventDispatcher<{ select: number[] }>()
+  const cmp = get_current_component();
+  let host: HTMLTableElement;
+  const dispatch = createEventDispatcher<{ select: number[] }>();
 
-  export let position: Bool = true
-  $: assertBoolean(position, "position")
-
-  export let striped: Bool = true
-  $: assertBoolean(striped, "striped")
-
-  export let hoverable: Bool = true
-  $: assertBoolean(hoverable, "hoverable")
-
-  export let fullwidth: Bool = true
-  $: assertBoolean(fullwidth, "fullwidth")
-
-  export let bordered: Bool = true
-  $: assertBoolean(bordered, "bordered")
-
-  export let selectable: Bool = false
-  $: assertBoolean(selectable, "selectable")
-
-  export let disabled: Bool = false
-  $: assertBoolean(disabled, "disabled")
-
-  export let headers: string[] = []
-  export let actions: Action[] = []
-  export let rows: any[][] = []
+  export let position: boolean = true;
+  export let striped: boolean = true;
+  export let hoverable: boolean = true;
+  export let fullwidth: boolean = true;
+  export let bordered: boolean = true;
+  export let selectable: boolean = false;
+  export let disabled: boolean = false;
+  export let headers: string[] = [];
+  export let actions: Action[] = [];
+  export let rows: any[][] = [];
 
   onMount(() => {
-    initElement(host.parentNode as Element)()
-  })
+    initElement(host.parentNode as Element)();
+  });
 
-  let selected = []
+  let selected = [];
   function onSelect(index: number) {
     return (e: Event) => {
-      const { checked } = e.target as HTMLInputElement
+      const { checked } = e.target as HTMLInputElement;
       if (index === -1) {
-        if (checked) selected = Array.from({ length: rows.length }, (_, i) => i)
-        else selected = []
+        if (checked)
+          selected = Array.from({ length: rows.length }, (_, i) => i);
+        else selected = [];
       } else {
-        if (checked) selected = [...selected, index]
-        else selected = selected.filter((i) => i !== index)
+        if (checked) selected = [...selected, index];
+        else selected = selected.filter((i) => i !== index);
       }
-      dispatch("select", selected)
-    }
+      dispatch("select", selected);
+    };
   }
 
   export function unselect(index: number): void {
     if (selected.includes(index)) {
-      selected = selected.filter((i) => i !== index)
+      selected = selected.filter((i) => i !== index);
     }
-    selected = selected.map((i) => (i > index ? i - 1 : i))
-    dispatch("select", selected)
+    selected = selected.map((i) => (i > index ? i - 1 : i));
+    dispatch("select", selected);
   }
 </script>
 
@@ -106,6 +87,7 @@
             type="checkbox"
             checked={selected.length === rows.length}
             on:change={onSelect(-1)}
+            {disabled}
           />
         </th>
       {/if}
@@ -134,6 +116,7 @@
               type="checkbox"
               checked={selected.includes(index)}
               on:change={onSelect(index)}
+              {disabled}
             />
           </td>
         {/if}
