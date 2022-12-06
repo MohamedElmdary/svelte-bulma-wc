@@ -1,25 +1,15 @@
 <svelte:options tag="tf-example" />
 
 <script context="module" lang="ts">
-  import Table from "../src/elements/Table.svelte"
+  import Tabs from "../src/elements/Tabs.svelte";
 
-  let rows = Array.from({ length: 50 }, (_, i) => [i])
+  let active = 0;
 </script>
 
-<Table
-  headers={["id"]}
-  {rows}
-  position={false}
-  selectable={true}
-  actions={[
-    {
-      label: "Delete",
-      click({ index, cmp }) {
-        rows = rows.filter((_, i) => i !== index)
-        cmp.rows = rows
-        cmp.unselect(index)
-      },
-    },
+<Tabs
+  tabs={[
+    { id: 0, label: "t1", error: true },
+    { id: 1, label: "t2", error: true },
   ]}
-  on:select={console.log}
+  bind:active
 />

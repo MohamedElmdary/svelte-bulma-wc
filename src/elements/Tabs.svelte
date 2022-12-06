@@ -1,7 +1,7 @@
 <svelte:options tag="b-tabs" />
 
 <script context="module" lang="ts">
-  import { onMount } from "svelte/internal"
+  import { onMount } from "svelte/internal";
   import {
     assertAlign,
     assertBoolean,
@@ -13,38 +13,39 @@
     type Align,
     type Bool,
     type Sizes,
-  } from "../internals"
+  } from "../internals";
 
-  export type Styles = "boxed" | "toggle" | "toggle-rounded"
+  export type Styles = "boxed" | "toggle" | "toggle-rounded";
   export interface TabOptions {
-    id: string | number | symbol
-    label: string
-    icon?: string
-    removable?: boolean
+    id: string | number | symbol;
+    label: string;
+    icon?: string;
+    removable?: boolean;
+    error?: boolean;
   }
 </script>
 
 <script lang="ts">
-  let host: Element
+  let host: Element;
 
-  export let align: Align = "centered"
-  $: assertAlign(align)
+  export let align: Align = "centered";
+  $: assertAlign(align);
 
-  export let size: Sizes = undefined
-  $: assertSize(size)
+  export let size: Sizes = undefined;
+  $: assertSize(size);
 
-  export let style: Styles = "boxed"
-  $: assertIn(style, ["boxed", "toggle", "toggle-rounded"], "style")
+  export let style: Styles = "boxed";
+  $: assertIn(style, ["boxed", "toggle", "toggle-rounded"], "style");
 
-  export let fullwidth: Bool = undefined
-  $: assertBoolean(fullwidth, "fullwidth")
+  export let fullwidth: Bool = undefined;
+  $: assertBoolean(fullwidth, "fullwidth");
 
-  export let tabs: TabOptions[] = []
-  export let active: TabOptions["id"]
+  export let tabs: TabOptions[] = [];
+  export let active: TabOptions["id"];
 
   onMount(() => {
-    initElement(host.parentNode as Element)()
-  })
+    initElement(host.parentNode as Element)();
+  });
 </script>
 
 <div
@@ -68,6 +69,7 @@
         <a
           href="#!"
           on:click|preventDefault|stopPropagation={() => (active = tab.id)}
+          class:has-text-danger={tab.error}
         >
           {#if tab.icon}
             <b-icon icon={tab.icon} />
@@ -86,7 +88,7 @@
                     composed: true,
                     cancelable: true,
                   })
-                )
+                );
               }}
             />
           {/if}
