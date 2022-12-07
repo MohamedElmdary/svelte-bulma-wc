@@ -28,24 +28,24 @@
   })
 
   // Support Numeric values
-  let setValue: (value: string | number) => void
+  let setValue: (value: string | number, ctx?: any) => void
   onDestroy(() => {
     if (setValue) controller.setValue = setValue
   })
 
   $: if (controller && !setValue) {
     setValue = controller.setValue.bind(controller)
-    controller.setValue = (value) => {
+    controller.setValue = (value, ctx) => {
       if (value == null || value == undefined || value == "null") {
-        return setValue(null)
+        return setValue(null, ctx)
       }
 
       const idx = options.findIndex((option) => option.value == value)
       if (idx > -1) {
-        return setValue(options[idx].value)
+        return setValue(options[idx].value, ctx)
       }
 
-      return setValue(value)
+      return setValue(value, ctx)
     }
   }
 
