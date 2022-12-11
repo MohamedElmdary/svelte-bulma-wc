@@ -118,11 +118,11 @@
     </div>
     {#if hint}
       <p class="help" class:is-success={validation && valid}>
-        {hint}
+        {@html hint}
       </p>
     {:else if validation && invalid && ctrl.error}
       <p class="help is-danger">
-        {ctrl.error}
+        {@html ctrl.error}
       </p>
     {/if}
   {/if}

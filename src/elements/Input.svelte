@@ -44,7 +44,7 @@
 <div class="field" bind:this={host}>
   {#if ctrl}
     <span class="label mb-0">
-      {label}
+      {@html label}
     </span>
     <p class="mb-2 is-size-6 has-text-grey">
       {@html sublabel}
@@ -111,11 +111,11 @@
         class:is-warning={hintColor === "warning"}
         class:is-danger={hintColor === "danger"}
       >
-        {hint}
+        {@html hint}
       </p>
     {:else if invalid && ctrl.error}
       <p class="help is-danger">
-        {ctrl.error}
+        {@html ctrl.error}
       </p>
     {/if}
   {/if}

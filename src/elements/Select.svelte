@@ -57,7 +57,7 @@
 <div class="field" bind:this={host}>
   {#if ctrl}
     <span class="label mb-0">
-      {label}
+      {@html label}
     </span>
     <p class="mb-2 is-size-6 has-text-grey">
       {@html sublabel}
@@ -79,12 +79,12 @@
         >
           {#if placeholder}
             <option value={null} selected={ctrl.value == null} disabled>
-              {placeholder}
+              {@html placeholder}
             </option>
           {/if}
           {#each options as option (option.value)}
             <option selected={ctrl.value == option.value} value={option.value}>
-              {option.label}
+              {@html option.label}
             </option>
           {/each}
         </select>
@@ -92,11 +92,11 @@
     </div>
     {#if hint}
       <p class="help" class:is-success={validation && valid}>
-        {hint}
+        {@html hint}
       </p>
     {:else if validation && invalid && ctrl.error}
       <p class="help is-danger">
-        {ctrl.error}
+        {@html ctrl.error}
       </p>
     {/if}
   {/if}
