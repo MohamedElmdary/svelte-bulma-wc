@@ -139,7 +139,7 @@
 
         {#if actions.length}
           <td style:vertical-align="middle">
-            <b-btns addons size="small" align="centered">
+            <b-btns size="small" align="centered">
               {#each actions as action}
                 <button
                   use:btn={{
@@ -150,6 +150,7 @@
                       row: rows[index],
                       cmp,
                     }),
+                    outlined: true
                   }}
                   disabled={action.disabled?.({
                     action,
