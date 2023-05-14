@@ -26,6 +26,10 @@
   export let hint: string = undefined
   export let disabled: boolean = false
   export let validation: boolean = true
+  export let style: string = ""
+  
+  let _class: string = "" 
+  export { _class as class }
 
   export let hintColor: Colors = undefined
   $: assertColors(hintColor)
@@ -56,17 +60,18 @@
     >
       {#if type === "textarea"}
         <textarea
-          class="textarea"
+          class="textarea {_class}"
           class:is-success={valid}
           class:is-danger={invalid}
           {placeholder}
           use:form={controller}
           value={ctrl.value}
           {disabled}
+          {style}
         />
       {:else}
         <input
-          class="input"
+          class="input {_class}"
           class:is-success={valid}
           class:is-danger={invalid}
           type={usedType}
@@ -74,6 +79,7 @@
           use:form={controller}
           value={ctrl.value}
           {disabled}
+          {style}
         />
 
         {#if type === "password"}
